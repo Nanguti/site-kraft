@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { FaRocket, FaUsers, FaLightbulb, FaChartLine } from "react-icons/fa";
@@ -73,9 +72,10 @@ const AboutPreview = () => {
               Crafting Digital Excellence Since 2019
             </h2>
             <p className="mb-8 text-lg text-blue-100/80">
-              We're more than just a web development company. We're your digital
-              transformation partner, committed to turning your vision into
-              reality with cutting-edge solutions and unparalleled expertise.
+              We are more than just a web development company. We are your
+              digital transformation partner, committed to turning your vision
+              into reality with cutting-edge solutions and unparalleled
+              expertise.
             </p>
 
             <div className="mb-8 space-y-4">
@@ -118,7 +118,8 @@ const AboutPreview = () => {
             >
               <Link
                 href="/about"
-                className="group inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-white transition-all hover:bg-blue-700"
+                className="group inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-white transition-all
+                 hover:bg-blue-700"
               >
                 Learn More About Us
                 <svg
@@ -150,7 +151,8 @@ const AboutPreview = () => {
                 className="group relative overflow-hidden rounded-2xl bg-white/5 p-6 backdrop-blur-sm"
               >
                 <div
-                  className={`absolute inset-0 bg-gradient-to-r ${stat.color} opacity-0 transition-opacity duration-300 group-hover:opacity-10`}
+                  className={`absolute inset-0 bg-gradient-to-r ${stat.color} opacity-0 transition-opacity duration-300
+                     group-hover:opacity-10`}
                 />
                 <div className="relative">
                   <stat.icon className="mb-4 h-8 w-8 text-blue-400" />
