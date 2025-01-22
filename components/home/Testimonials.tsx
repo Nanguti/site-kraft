@@ -33,7 +33,7 @@ const Testimonials = () => {
               className="rounded-lg bg-white p-6 shadow-md"
             >
               <p className="mb-6 italic text-gray-600">
-                {`"${testimonial.text}"`}"
+                {`"${testimonial.text}"`}
               </p>
               <div className="flex items-center">
                 <img
