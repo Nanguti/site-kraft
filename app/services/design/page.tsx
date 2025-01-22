@@ -243,7 +243,7 @@ const DesignPage = () => {
           transition={{ duration: 0.6 }}
           className="container relative mx-auto px-4 text-center"
         >
-          <h2 className="mb-6 text-4xl font-bold text-gray-900">
+          <h2 className="mb-6 text-4xl font-bold text-white">
             Ready to Transform Your Digital Experience?
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">

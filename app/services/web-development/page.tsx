@@ -367,8 +367,8 @@ const WebDevelopment = () => {
             Ready to Start Your Project?
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
-            Let's discuss how we can help bring your vision to life with our
-            expert web development services.
+            Let&apos;s discuss how we can help bring your vision to life with
+            our expert web development services.
           </p>
           <motion.div
             whileHover={{ scale: 1.05 }}

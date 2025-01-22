@@ -226,10 +226,6 @@ const ProgressCircle = ({ progress }: { progress: number }) => (
 const SEOPage = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
 
   return (
     <div ref={containerRef} className="overflow-hidden">
@@ -410,7 +406,7 @@ const SEOPage = () => {
             Ready to Improve Your Search Rankings?
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
-            Let's discuss how our SEO services can help your business grow
+            Let&apos;s discuss how our SEO services can help your business grow
             through improved organic visibility and targeted traffic.
           </p>
           <motion.div
