@@ -72,8 +72,8 @@ const Testimonials = () => {
             What Our Clients Say
           </h2>
           <p className="text-blue-200/80 max-w-2xl mx-auto">
-            Don't just take our word for it. Here's what our clients have to say
-            about their experience working with Site Kraft Systems.
+            Don&apos;t just take our word for it. Here&apos;s what our clients
+            have to say about their experience working with Site Kraft Systems.
           </p>
         </motion.div>
 
@@ -124,7 +124,7 @@ const Testimonials = () => {
 
                     <blockquote>
                       <p className="text-gray-300 italic">
-                        "{testimonial.quote}"
+                        &quot;{testimonial.quote}&quot;
                       </p>
                     </blockquote>
 

@@ -71,11 +71,11 @@ const ContactForm = () => {
             Get in Touch
           </span>
           <h2 className="mb-4 text-4xl font-bold text-gray-900">
-            Let's Start a Conversation
+            Let&apos;s Start a Conversation
           </h2>
           <p className="mx-auto mb-16 max-w-2xl text-gray-600">
-            Ready to transform your digital presence? We're here to help bring
-            your vision to life. Reach out to us for a free consultation.
+            Ready to transform your digital presence? We&apos;re here to help
+            bring your vision to life. Reach out to us for a free consultation.
           </p>
         </motion.div>
 
@@ -87,7 +87,7 @@ const ContactForm = () => {
             transition={{ duration: 0.6 }}
             className="space-y-6 lg:col-span-1"
           >
-            {contactInfo.map((info, index) => (
+            {contactInfo.map((info) => (
               <div
                 key={info.title}
                 className="overflow-hidden rounded-xl bg-white p-6 shadow-lg"
@@ -241,10 +241,10 @@ const ContactForm = () => {
                         <path
                           className="opacity-75"
                           fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          d="M4 12a8 8 0 018-8v4a4 4 0 100 8H4z"
                         />
                       </svg>
-                      Sending...
+                      Submitting...
                     </>
                   ) : (
                     "Send Message"

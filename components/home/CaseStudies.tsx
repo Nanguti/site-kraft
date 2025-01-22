@@ -78,7 +78,7 @@ const CaseStudies = () => {
             Our Success Stories
           </h2>
           <p className="mx-auto mb-16 max-w-2xl text-gray-600">
-            Explore how we've helped businesses across different industries
+            Explore how we&#39;ve helped businesses across different industries
             achieve their digital transformation goals with innovative
             solutions.
           </p>
