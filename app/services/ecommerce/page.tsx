@@ -6,13 +6,9 @@ import {
   FaShoppingCart,
   FaMobile,
   FaLock,
-  FaCreditCard,
   FaChartLine,
   FaTruck,
   FaSync,
-  FaTools,
-  FaCogs,
-  FaUserFriends,
 } from "react-icons/fa";
 
 const services = [

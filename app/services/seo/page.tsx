@@ -224,14 +224,12 @@ const ProgressCircle = ({ progress }: { progress: number }) => (
 );
 
 const SEOPage = () => {
+  const [activeCategory, setActiveCategory] = useState("All");
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
   });
-
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
 
   return (
     <div ref={containerRef} className="overflow-hidden">
@@ -408,7 +406,7 @@ const SEOPage = () => {
           transition={{ duration: 0.6 }}
           className="container relative mx-auto px-4 text-center"
         >
-          <h2 className="mb-6 text-4xl font-bold text-gray-900">
+          <h2 className="mb-6 text-4xl font-bold text-white">
             Ready to Improve Your Search Rankings?
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
