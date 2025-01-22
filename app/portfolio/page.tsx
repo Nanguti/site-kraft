@@ -86,10 +86,10 @@ const AnimatedBackground = () => (
 const PortfolioPage = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
+  //   const { scrollYProgress } = useScroll({
+  //     target: containerRef,
+  //     offset: ["start end", "end start"],
+  //   });
 
   //   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
@@ -118,7 +118,7 @@ const PortfolioPage = () => {
               Our Portfolio
             </h1>
             <p className="mx-auto mb-12 max-w-2xl text-xl text-gray-300">
-              Showcasing our best work and the innovative solutions we've
+              Showcasing our best work and the innovative solutions we have
               created for our clients.
             </p>
           </motion.div>

@@ -7,9 +7,7 @@ import {
   FaMobile,
   FaRegLightbulb,
   FaRegEye,
-  FaMagic,
   FaChartBar,
-  FaPencilRuler,
   FaLayerGroup,
 } from "react-icons/fa";
 
