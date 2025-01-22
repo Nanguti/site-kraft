@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { useRef, useState } from "react";
 import { FaGlobe, FaMobile, FaShoppingCart, FaSearch } from "react-icons/fa";
 
@@ -91,7 +91,7 @@ const PortfolioPage = () => {
     offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  //   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
   const filteredProjects =
     activeCategory === "All"
@@ -208,7 +208,7 @@ const PortfolioPage = () => {
             Ready to Start Your Project?
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-gray-300">
-            Let's create something amazing together. Get in touch to discuss
+            Let us create something amazing together. Get in touch to discuss
             your project requirements.
           </p>
           <motion.div

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import {
   FaSearch,
@@ -224,7 +224,6 @@ const ProgressCircle = ({ progress }: { progress: number }) => (
 );
 
 const SEOPage = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (

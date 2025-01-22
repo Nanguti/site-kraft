@@ -261,7 +261,7 @@ const EcommercePage = () => {
             Ready to Launch Your Online Store?
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-emerald-100/80">
-            Let's discuss how we can help you create a powerful e-commerce
+            Let us discuss how we can help you create a powerful e-commerce
             presence that drives sales and growth.
           </p>
           <motion.div

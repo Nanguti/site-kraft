@@ -129,10 +129,10 @@ const AboutPage = () => {
                 Our Mission
               </h2>
               <p className="mb-8 text-lg text-gray-600">
-                We're on a mission to empower businesses with innovative digital
-                solutions that drive growth and success. Through cutting-edge
-                technology and creative excellence, we transform ideas into
-                impactful digital experiences.
+                We are on a mission to empower businesses with innovative
+                digital solutions that drive growth and success. Through
+                cutting-edge technology and creative excellence, we transform
+                ideas into impactful digital experiences.
               </p>
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100">

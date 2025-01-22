@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { useRef, useState } from "react";
-import { FaClock, FaUser, FaTags, FaArrowRight } from "react-icons/fa";
+import { FaClock, FaUser, FaArrowRight } from "react-icons/fa";
 
 const categories = ["All", "Development", "Design", "SEO", "Business"];
 
@@ -72,10 +72,10 @@ const AnimatedBackground = () => (
 const BlogPage = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
+  //   const { scrollYProgress } = useScroll({
+  //     target: containerRef,
+  //     offset: ["start end", "end start"],
+  //   });
 
   const filteredPosts =
     activeCategory === "All"

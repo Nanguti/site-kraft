@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { useRef, useState } from "react";
 import {
   FaMapMarkerAlt,
@@ -78,10 +78,10 @@ const ContactPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
+  //   const { scrollYProgress } = useScroll({
+  //     target: containerRef,
+  //     offset: ["start end", "end start"],
+  //   });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
