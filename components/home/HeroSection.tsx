@@ -124,10 +124,11 @@ const HeroSection = () => {
               damping: 10,
             }}
           >
-            <h1 className="mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-500 bg-clip-text text-6xl font-bold text-transparent md:text-8xl">
-              Crafting Digital
-              <br />
-              Excellence
+            <h1
+              className="mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-500 
+            bg-clip-text text-4xl font-bold text-transparent md:text-5xl"
+            >
+              Crafting Digital Excellence
             </h1>
           </motion.div>
 

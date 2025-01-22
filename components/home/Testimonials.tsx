@@ -8,7 +8,7 @@ const testimonials = [
   {
     name: "Jane Muthoni",
     role: "CEO, Nairobi Real Estate Ltd",
-    image: "/images/testimonials/jane.jpg",
+    image: "/testimonials/avatar.jpg",
     quote:
       "Site Kraft Systems transformed our online presence completely. Our property listings are now more visible, and we've seen a 200% increase in qualified leads.",
     rating: 5,
@@ -16,7 +16,7 @@ const testimonials = [
   {
     name: "David Omondi",
     role: "Director, Sunshine Academy",
-    image: "/images/testimonials/david.jpg",
+    image: "/testimonials/avatar.jpg",
     quote:
       "The school management system has streamlined our operations significantly. Parents love the easy fee payment system and student progress tracking.",
     rating: 5,
@@ -24,7 +24,7 @@ const testimonials = [
   {
     name: "Sarah Hassan",
     role: "Founder, Healing Hands NGO",
-    image: "/images/testimonials/sarah.jpg",
+    image: "/testimonials/avatar.jpg",
     quote:
       "Working with Site Kraft was a pleasure. They understood our mission and created a website that effectively communicates our impact.",
     rating: 5,
@@ -32,7 +32,7 @@ const testimonials = [
   {
     name: "Michael Njoroge",
     role: "Operations Manager, Swift Logistics",
-    image: "/images/testimonials/michael.jpg",
+    image: "/testimonials/avatar.jpg",
     quote:
       "The tracking system has revolutionized our delivery operations. Real-time tracking and automated notifications have improved customer satisfaction.",
     rating: 5,

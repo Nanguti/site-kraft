@@ -1,199 +1,170 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { useRef } from "react";
+import { FaRocket, FaUsers, FaLightbulb, FaChartLine } from "react-icons/fa";
+
+const stats = [
+  {
+    icon: FaRocket,
+    number: "100+",
+    label: "Projects Completed",
+    color: "from-blue-500 to-blue-600",
+  },
+  {
+    icon: FaUsers,
+    number: "50+",
+    label: "Happy Clients",
+    color: "from-purple-500 to-purple-600",
+  },
+  {
+    icon: FaLightbulb,
+    number: "5+",
+    label: "Years Experience",
+    color: "from-orange-500 to-red-600",
+  },
+  {
+    icon: FaChartLine,
+    number: "90%",
+    label: "Client Retention",
+    color: "from-green-500 to-green-600",
+  },
+];
 
 const AboutPreview = () => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let animationFrameId: number;
-    const bubbles: Bubble[] = [];
-
-    class Bubble {
-      x: number;
-      y: number;
-      radius: number;
-      speed: number;
-      alpha: number;
-
-      constructor(canvas: HTMLCanvasElement) {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height - canvas.height;
-        this.radius = Math.random() * 5 + 2;
-        this.speed = Math.random() * 2 + 1;
-        this.alpha = Math.random() * 0.7 + 0.3;
-      }
-
-      update(canvas: HTMLCanvasElement) {
-        this.y += this.speed;
-        if (this.y > canvas.height) {
-          this.y = -this.radius;
-          this.x = Math.random() * canvas.width;
-        }
-      }
-
-      draw(ctx: CanvasRenderingContext2D) {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(147, 197, 253, ${this.alpha})`;
-        ctx.fill();
-      }
-    }
-
-    const setCanvasSize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-
-    setCanvasSize();
-    window.addEventListener("resize", setCanvasSize);
-
-    for (let i = 0; i < 100; i++) {
-      bubbles.push(new Bubble(canvas));
-    }
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      bubbles.forEach((bubble) => {
-        bubble.update(canvas);
-        bubble.draw(ctx);
-      });
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      window.removeEventListener("resize", setCanvasSize);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <section
-        className=" p- container relative my-32 
-      overflow-hidden rounded-lg bg-gradient-to-b from-gray-900 to-black py-20 text-white"
-      >
-        {/* Dropping Bubbles Canvas */}
-        <canvas ref={canvasRef} className="absolute inset-0 -z-10" />
+    <section
+      ref={containerRef}
+      className="relative overflow-hidden bg-gradient-to-b from-gray-900 to-blue-900 py-24"
+    >
+      {/* Animated Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(59,130,246,0.1)_1px,transparent_1px),linear-gradient(-45deg,rgba(59,130,246,0.1)_1px,transparent_1px)] bg-[length:40px_40px]" />
+        <motion.div
+          style={{ y, opacity }}
+          className="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-transparent"
+        />
+      </div>
 
-        <div className="container mx-auto px-6 md:px-12">
-          {/* Animated Heading */}
-          <motion.h2
-            className="mb-8 bg-gradient-to-r from-blue-400 via-cyan-400
-             to-purple-500 bg-clip-text text-center text-4xl font-extrabold
-              text-transparent md:text-6xl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+      <div className="container relative mx-auto px-4">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* Content Section */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex flex-col justify-center"
           >
-            About <span className="text-white">Site Kraft Systems</span>
-          </motion.h2>
+            <span className="mb-2 inline-block rounded-full bg-blue-500/10 px-4 py-1 text-sm font-semibold text-blue-300">
+              About Us
+            </span>
+            <h2 className="mb-6 text-4xl font-bold text-white lg:text-5xl">
+              Crafting Digital Excellence Since 2019
+            </h2>
+            <p className="mb-8 text-lg text-blue-100/80">
+              We're more than just a web development company. We're your digital
+              transformation partner, committed to turning your vision into
+              reality with cutting-edge solutions and unparalleled expertise.
+            </p>
 
-          {/* Animated Description */}
-          <motion.p
-            className="mx-auto max-w-4xl text-center text-lg leading-relaxed text-gray-300 md:text-xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            We are a leading web development and SEO company based in Nairobi,
-            committed to empowering businesses with innovative digital
-            solutions. Our focus on cutting-edge technologies ensures your brand
-            is success in a fast-evolving digital world.
-          </motion.p>
-
-          {/* Highlight Features Section */}
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {/* Feature Cards */}
-            {[
-              {
-                title: "Web Development",
-                description:
-                  "Crafting scalable, high-performance websites tailored to your unique needs.",
-                gradient: "from-cyan-500 to-blue-500",
-                icon: (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 10.75a7.25 7.25 0 1114.5 0M12 14.25a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm6.82 1.5l3.18 3.5m0 0l-3.18 3.5m3.18-3.5H13"
-                  />
-                ),
-              },
-              {
-                title: "SEO Optimization",
-                description:
-                  "Helping your business rise to the top of search engine rankings.",
-                gradient: "from-purple-500 to-pink-500",
-                icon: (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 14l3-3 3 3M9 10l3-3 3 3"
-                  />
-                ),
-              },
-              {
-                title: "Custom Solutions",
-                description:
-                  "Tailored strategies designed to drive results and meet business goals.",
-                gradient: "from-green-400 to-blue-500",
-                icon: (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 8v8m0 0h8m-8 0H4"
-                  />
-                ),
-              },
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                className="group relative rounded-xl bg-gradient-to-b from-gray-800/60 to-gray-900 p-6 shadow-lg"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-              >
-                {/* Icon */}
-                <div
-                  className={`mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r ${feature.gradient}`}
+            <div className="mb-8 space-y-4">
+              {[
+                "Innovation at Core",
+                "Client-Centric Approach",
+                "Result-Driven Solutions",
+              ].map((item, index) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="flex items-center gap-3"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
+                  <div className="rounded-full bg-blue-500/20 p-1">
+                    <svg
+                      className="h-4 w-4 text-blue-300"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </div>
+                  <span className="text-blue-100">{item}</span>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <Link
+                href="/about"
+                className="group inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-white transition-all hover:bg-blue-700"
+              >
+                Learn More About Us
+                <svg
+                  className="h-5 w-5 transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     strokeWidth={2}
-                    stroke="white"
-                    className="h-8 w-8"
-                  >
-                    {feature.icon}
-                  </svg>
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          {/* Stats Grid */}
+          <div className="grid grid-cols-2 gap-6">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                className="group relative overflow-hidden rounded-2xl bg-white/5 p-6 backdrop-blur-sm"
+              >
+                <div
+                  className={`absolute inset-0 bg-gradient-to-r ${stat.color} opacity-0 transition-opacity duration-300 group-hover:opacity-10`}
+                />
+                <div className="relative">
+                  <stat.icon className="mb-4 h-8 w-8 text-blue-400" />
+                  <div className="mb-2 text-3xl font-bold text-white">
+                    {stat.number}
+                  </div>
+                  <div className="text-blue-200">{stat.label}</div>
                 </div>
-                {/* Title */}
-                <h4 className="text-lg font-bold text-white group-hover:text-cyan-400">
-                  {feature.title}
-                </h4>
-                {/* Description */}
-                <p className="mt-2 text-sm text-gray-300 group-hover:text-gray-200">
-                  {feature.description}
-                </p>
-                {/* Glow Effect */}
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 opacity-0 blur-lg transition duration-500 group-hover:opacity-25"></div>
               </motion.div>
             ))}
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 

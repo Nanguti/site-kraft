@@ -159,7 +159,7 @@ const ServicesGrid = () => {
     <div className="flex items-center justify-center">
       <section
         className="relative container overflow-hidden bg-gradient-to-br
-       from-blue-900 via-indigo-900 to-purple-900 py-20 rounded-lg"
+       from-blue-900 via-indigo-900 to-purple-900 py-20 mt-32 rounded-lg"
       >
         {/* Animated Background Canvas */}
         <canvas
