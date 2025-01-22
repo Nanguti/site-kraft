@@ -245,8 +245,8 @@ const DesignPage = () => {
             Ready to Transform Your Digital Experience?
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-gray-600">
-            Let's collaborate to create designs that not only look beautiful but
-            drive real results for your business.
+            Let us collaborate to create designs that not only look beautiful
+            but drive real results for your business.
           </p>
           <motion.div
             whileHover={{ scale: 1.05 }}

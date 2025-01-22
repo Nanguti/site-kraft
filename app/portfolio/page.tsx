@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { FaGlobe, FaMobile, FaShoppingCart, FaSearch } from "react-icons/fa";
 
