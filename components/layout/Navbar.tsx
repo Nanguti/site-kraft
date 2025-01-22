@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
@@ -48,13 +48,13 @@ const Navbar = () => {
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <Image
+            {/* <Image
               src="/logo.png"
               alt="Site Kraft"
               width={40}
               height={40}
               className="h-10 w-auto"
-            />
+            /> */}
             <span
               className={`text-xl font-bold ${
                 isScrolled ? "text-gray-900" : "text-white"
