@@ -107,8 +107,8 @@ const AboutPreview = () => {
           >
             We are a leading web development and SEO company based in Nairobi,
             committed to empowering businesses with innovative digital
-            solutions. Our focus on cutting-edge technologies ensures your
-            brand's success in a fast-evolving digital world.
+            solutions. Our focus on cutting-edge technologies ensures your brand
+            is success in a fast-evolving digital world.
           </motion.p>
 
           {/* Highlight Features Section */}
