@@ -77,8 +77,6 @@ const BlogPage = () => {
     offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-
   const filteredPosts =
     activeCategory === "All"
       ? blogPosts

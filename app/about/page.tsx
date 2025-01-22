@@ -7,7 +7,6 @@ import {
   FaHandshake,
   FaRocket,
   FaHeart,
-  FaUsers,
   FaGlobe,
 } from "react-icons/fa";
 
@@ -109,8 +108,8 @@ const AboutPage = () => {
               Our Story
             </h1>
             <p className="mx-auto mb-8 max-w-2xl text-xl text-blue-100/80">
-              Transforming businesses through innovative digital solutions and
-              exceptional service since 2019.
+              We&apos;ve helped numerous businesses achieve their digital goals
+              through innovative solutions and dedicated service.
             </p>
           </motion.div>
         </div>
@@ -280,8 +279,8 @@ const AboutPage = () => {
             Ready to Work Together?
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-blue-100/80">
-            Let's discuss how we can help transform your digital presence and
-            achieve your business goals.
+            Let&apos;s discuss how we can help transform your digital presence
+            and achieve your business goals.
           </p>
           <motion.div
             whileHover={{ scale: 1.05 }}

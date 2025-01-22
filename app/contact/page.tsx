@@ -83,8 +83,6 @@ const ContactPage = () => {
     offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -111,8 +109,8 @@ const ContactPage = () => {
               Get in Touch
             </h1>
             <p className="mx-auto mb-12 max-w-2xl text-xl text-gray-300">
-              Have a project in mind? We'd love to hear about it. Let's work
-              together to create something amazing.
+              Have a project in mind? We&apos;d love to hear about it.
+              Let&apos;s work together to create something amazing.
             </p>
           </motion.div>
 
