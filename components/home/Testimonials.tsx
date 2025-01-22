@@ -32,7 +32,9 @@ const Testimonials = () => {
               key={testimonial.name}
               className="rounded-lg bg-white p-6 shadow-md"
             >
-              <p className="mb-6 italic text-gray-600">"{testimonial.text}"</p>
+              <p className="mb-6 italic text-gray-600">
+                {`"${testimonial.text}"`}"
+              </p>
               <div className="flex items-center">
                 <img
                   src={testimonial.image}

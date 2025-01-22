@@ -15,7 +15,7 @@ const HeroSection = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let particles = [];
+    const particles: Particle[] = [];
     let animationFrameId: number;
 
     const setCanvasSize = () => {
@@ -54,9 +54,9 @@ const HeroSection = () => {
         if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
       }
 
-      draw(ctx: CanvasRenderingContext2D) {
-        // Removed bubble drawing
-      }
+      // draw(ctx: CanvasRenderingContext2D) {
+      //   // Removed bubble drawing
+      // }
     }
 
     for (let i = 0; i < 200; i++) {

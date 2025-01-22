@@ -2,9 +2,70 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
+import { IconType } from "react-icons";
+import {
+  FaCode,
+  FaSearch,
+  FaShoppingCart,
+  FaPaintBrush,
+  FaWordpress,
+  FaTools,
+} from "react-icons/fa";
+
+interface Service {
+  title: string;
+  description: string;
+  icon: IconType;
+  color: string;
+}
+
+const services: Service[] = [
+  {
+    title: "Custom Web Development",
+    description:
+      "Tailored web solutions built with cutting-edge technologies to meet your specific business needs.",
+    icon: FaCode,
+    color: "from-blue-400 to-blue-600",
+  },
+  {
+    title: "SEO Optimization",
+    description:
+      "Boost your website's visibility and rank higher on Google with our expert SEO services.",
+    icon: FaSearch,
+    color: "from-purple-400 to-purple-600",
+  },
+  {
+    title: "E-commerce Solutions",
+    description:
+      "Build powerful online stores with secure payment integration and inventory management.",
+    icon: FaShoppingCart,
+    color: "from-green-400 to-green-600",
+  },
+  {
+    title: "Web Design",
+    description:
+      "Create stunning, responsive websites that provide exceptional user experience across all devices.",
+    icon: FaPaintBrush,
+    color: "from-pink-400 to-pink-600",
+  },
+  {
+    title: "CMS Development",
+    description:
+      "Easy-to-use content management systems that give you full control over your website.",
+    icon: FaWordpress,
+    color: "from-yellow-400 to-yellow-600",
+  },
+  {
+    title: "Website Maintenance",
+    description:
+      "Regular updates, security patches, and technical support to keep your website running smoothly.",
+    icon: FaTools,
+    color: "from-red-400 to-red-600",
+  },
+];
 
 const ServicesGrid = () => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -13,120 +74,144 @@ const ServicesGrid = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const particles: { x: number; y: number; r: number; vy: number }[] = [];
-    const particleCount = 150;
-
-    const resizeCanvas = () => {
+    // Handle resize
+    const handleResize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
+    handleResize(); // Initial size
+    window.addEventListener("resize", handleResize);
 
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
+    const particles: Array<{
+      x: number;
+      y: number;
+      radius: number;
+      vx: number;
+      vy: number;
+    }> = [];
+    const particleCount = 100; // Increased for better visibility
 
+    // Create particles
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        r: Math.random() * 2 + 1,
-        vy: Math.random() * 1.5 + 0.5,
+        radius: Math.random() * 2 + 1,
+        vx: (Math.random() - 0.5) * 1, // Increased speed
+        vy: (Math.random() - 0.5) * 1, // Increased speed
       });
     }
 
+    let animationFrameId: number;
+
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((p) => {
-        p.y += p.vy;
-        if (p.y > canvas.height) p.y = -p.r;
+
+      // Update and draw particles
+      particles.forEach((particle) => {
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+
+        // Wrap around edges instead of bouncing
+        if (particle.x < 0) particle.x = canvas.width;
+        if (particle.x > canvas.width) particle.x = 0;
+        if (particle.y < 0) particle.y = canvas.height;
+        if (particle.y > canvas.height) particle.y = 0;
 
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(173, 216, 230, 0.8)`; // Light blue particles
+        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(255, 255, 255, 0.5)"; // Increased opacity
         ctx.fill();
       });
-      requestAnimationFrame(animate);
+
+      // Draw connections
+      particles.forEach((particle, i) => {
+        particles.slice(i + 1).forEach((otherParticle) => {
+          const dx = particle.x - otherParticle.x;
+          const dy = particle.y - otherParticle.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 150) {
+            // Increased connection distance
+            ctx.beginPath();
+            ctx.moveTo(particle.x, particle.y);
+            ctx.lineTo(otherParticle.x, otherParticle.y);
+            ctx.strokeStyle = `rgba(255, 255, 255, ${
+              0.2 * (1 - distance / 150)
+            })`; // Increased opacity
+            ctx.stroke();
+          }
+        });
+      });
+
+      animationFrameId = requestAnimationFrame(animate);
     };
 
     animate();
 
-    return () => window.removeEventListener("resize", resizeCanvas);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
-  const services = [
-    {
-      title: "Web Development",
-      description:
-        "Custom websites and web applications built with modern technologies.",
-      icon: "🌐",
-    },
-    {
-      title: "SEO Services",
-      description: "Improve your search rankings and online visibility.",
-      icon: "🚀",
-    },
-    {
-      title: "Digital Solutions",
-      description: "Comprehensive digital strategies for business growth.",
-      icon: "💡",
-    },
-  ];
-
   return (
-    <div className="flex flex-col items-center justify-center">
-      <section className="relative py-20 rounded-lg text-white bg-indigo-950 ">
-        {/* Particle Background */}
+    <div className="flex items-center justify-center">
+      <section
+        className="relative container overflow-hidden bg-gradient-to-br
+       from-blue-900 via-indigo-900 to-purple-900 py-20 rounded-lg"
+      >
+        {/* Animated Background Canvas */}
         <canvas
           ref={canvasRef}
-          className="absolute inset-0 -z-10 h-full w-full"
+          className="absolute inset-0 h-full w-full opacity-20"
         />
 
-        {/* Content Container */}
-        <div className="container mx-auto px-6 md:px-12">
-          {/* Section Title */}
-          <motion.h2
-            className="mb-12 text-center bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-500 bg-clip-text text-4xl font-extrabold text-transparent md:text-6xl"
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          >
-            What We Offer
-          </motion.h2>
+        {/* Content */}
+        <div className="container relative mx-auto px-4">
+          <div className="mb-12 text-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mb-4 text-3xl font-bold text-white md:text-4xl"
+            >
+              Our Services
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mx-auto max-w-2xl text-gray-300"
+            >
+              We offer comprehensive web development and digital marketing
+              solutions to help your business thrive in the digital world.
+            </motion.p>
+          </div>
 
-          {/* Service Cards */}
-          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
               <motion.div
-                key={service.title}
-                className="relative overflow-hidden rounded-lg bg-gradient-to-b from-gray-900 to-gray-800 p-6 shadow-lg hover:shadow-xl"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.6,
-                  delay: index * 0.2,
-                  type: "spring",
-                  stiffness: 120,
-                }}
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                className="group relative overflow-hidden rounded-xl bg-white/10 p-6 backdrop-blur-sm"
               >
-                {/* Animated Icon */}
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-2xl shadow-md">
-                  {service.icon}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-r ${service.color} opacity-0 transition-opacity duration-300 group-hover:opacity-10`}
+                />
+
+                <div className="relative">
+                  <div className="mb-4 inline-block rounded-lg bg-white/10 p-3">
+                    <service.icon className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="mb-3 text-xl font-semibold text-white">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-300">{service.description}</p>
                 </div>
-
-                {/* Service Title */}
-                <h3 className="mt-6 text-xl font-semibold text-white">
-                  {service.title}
-                </h3>
-
-                {/* Service Description */}
-                <p className="mt-4 text-gray-300">{service.description}</p>
-
-                {/* Interactive Glow Effect */}
-                <motion.div
-                  className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 blur-xl"
-                  whileHover={{ opacity: 0.3 }}
-                  transition={{ duration: 0.5 }}
-                ></motion.div>
               </motion.div>
             ))}
           </div>
