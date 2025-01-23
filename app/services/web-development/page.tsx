@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import Link from "next/link";
 import { useRef } from "react";
 import {
   FaCode,
@@ -195,30 +196,37 @@ const WebDevelopment = () => {
       </section>
 
       {/* New Statistics Section */}
-      <section className="relative bg-white py-16">
-        <div className="container mx-auto px-4">
+      <section className="relative bg-gradient-to-br from-gray-50 to-blue-50 py-16 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.1)_0%,transparent_50%)]" />
+        <div className="container relative mx-auto px-4">
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             {statistics.map((stat, index) => (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center"
+                transition={{
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 10,
+                  delay: index * 0.2,
+                }}
+                className="relative text-center z-10 bg-white/60 backdrop-blur-sm rounded-xl p-6 shadow-lg"
               >
                 <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
+                  initial={{ scale: 0, rotate: -180 }}
+                  whileInView={{ scale: 1, rotate: 0 }}
                   transition={{
                     type: "spring",
-                    duration: 1,
+                    stiffness: 260,
+                    damping: 20,
                     delay: index * 0.2,
                   }}
-                  className="mb-2 text-4xl font-bold text-blue-600"
+                  className="mb-2 text-5xl font-bold text-blue-600"
                 >
                   {stat.value}
                 </motion.div>
-                <p className="text-gray-600">{stat.label}</p>
+                <p className="text-gray-600 font-medium">{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -226,22 +234,30 @@ const WebDevelopment = () => {
       </section>
 
       {/* Features Section */}
-      <section className="relative bg-white py-24">
-        <div className="container mx-auto px-4">
+      <section className="relative bg-gradient-to-br from-white to-blue-50 py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[length:40px_40px]" />
+        <div className="container relative mx-auto px-4 z-10">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-lg"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.2,
+                  type: "tween",
+                }}
+                whileHover={{
+                  scale: 1.05,
+                  rotate: index % 2 === 0 ? 2 : -2,
+                }}
+                className="relative group rounded-2xl bg-white p-8 shadow-xl transition-all hover:shadow-2xl"
               >
                 <div
-                  className={`absolute inset-0 bg-gradient-to-r ${feature.color} opacity-0 transition-opacity duration-300 group-hover:opacity-5`}
+                  className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${feature.color} opacity-0 transition-opacity duration-300 group-hover:opacity-10`}
                 />
-                <feature.icon className="mb-6 h-8 w-8 text-blue-600" />
+                <feature.icon className="mb-6 h-10 w-10 text-blue-600 transition-transform group-hover:scale-110" />
                 <h3 className="mb-4 text-xl font-bold text-gray-900">
                   {feature.title}
                 </h3>
@@ -253,27 +269,21 @@ const WebDevelopment = () => {
       </section>
 
       {/* New Development Process Section */}
-      <section className="relative overflow-hidden bg-gray-50 py-24">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[linear-gradient(30deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[length:20px_20px]" />
-        </div>
-
+      <section className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-blue-100 py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.05)_0%,transparent_70%)]" />
         <div className="container relative mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="mb-16 text-center"
           >
-            <span className="mb-2 inline-block rounded-full bg-blue-100 px-4 py-1 text-sm font-semibold text-blue-800">
-              Our Process
-            </span>
             <h2 className="mb-4 text-4xl font-bold text-gray-900">
-              How We Work
+              Our Development Journey
             </h2>
             <p className="mx-auto max-w-2xl text-gray-600">
-              Our proven development process ensures successful project delivery
-              and exceeds client expectations.
+              A meticulously crafted process designed to transform your vision
+              into reality.
             </p>
           </motion.div>
 
@@ -281,20 +291,18 @@ const WebDevelopment = () => {
             {processSteps.map((step, index) => (
               <motion.div
                 key={step.number}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.2,
+                  type: "spring",
+                }}
+                className="relative group"
               >
-                <div
-                  className="relative z-10 overflow-hidden rounded-2xl bg-white 
-                p-8 shadow-lg"
-                >
-                  <div
-                    className={`absolute -right-4 -top-4 h-24 w-24 
-                        bg-gradient-to-br ${step.color} opacity-10 blur-2xl`}
-                  />
-                  <div className="mb-4 text-4xl font-bold text-blue-600/20">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-400 to-purple-500 rounded-2xl opacity-30 group-hover:opacity-50 transition-opacity" />
+                <div className="relative bg-white rounded-2xl p-8 shadow-xl z-10">
+                  <div className="mb-4 text-5xl font-bold text-blue-600/20">
                     {step.number}
                   </div>
                   <h3 className="mb-2 text-xl font-bold text-gray-900">
@@ -302,9 +310,6 @@ const WebDevelopment = () => {
                   </h3>
                   <p className="text-gray-600">{step.description}</p>
                 </div>
-                {index < processSteps.length - 1 && (
-                  <div className="absolute -right-4 top-1/2 hidden h-0.5 w-8 bg-blue-200 lg:block" />
-                )}
               </motion.div>
             ))}
           </div>
@@ -381,10 +386,14 @@ const WebDevelopment = () => {
             whileTap={{ scale: 0.95 }}
             className="relative inline-block"
           >
-            <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 opacity-75 blur group-hover:opacity-100" />
-            <a
+            <div
+              className="absolute -inset-1 rounded-full bg-gradient-to-r from-blue-600 to-purple-600
+             opacity-75 blur group-hover:opacity-100"
+            />
+            <Link
               href="/contact"
-              className="relative inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-4 text-lg font-medium text-white transition-colors hover:bg-blue-700"
+              className="relative inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-4 text-lg 
+              font-medium text-white transition-colors hover:bg-blue-700"
             >
               Get Started
               <motion.svg
@@ -402,7 +411,7 @@ const WebDevelopment = () => {
                   d="M17 8l4 4m0 0l-4 4m4-4H3"
                 />
               </motion.svg>
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
       </section>
