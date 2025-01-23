@@ -49,7 +49,10 @@ const AboutPreview = () => {
     >
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(59,130,246,0.1)_1px,transparent_1px),linear-gradient(-45deg,rgba(59,130,246,0.1)_1px,transparent_1px)] bg-[length:40px_40px]" />
+        <div
+          className="absolute inset-0 bg-[linear-gradient(45deg,rgba(59,130,246,0.1)_1px,transparent_1px), 
+        linear-gradient(-45deg,rgba(59,130,246,0.1)_1px,transparent_1px)] bg-[length:40px_40px]"
+        />
         <motion.div
           style={{ y, opacity }}
           className="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-transparent"
@@ -65,7 +68,7 @@ const AboutPreview = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex flex-col justify-center"
           >
-            <span className="mb-2 inline-block rounded-full bg-blue-500/10 px-4 py-1 text-sm font-semibold text-blue-300">
+            <span className="mb-2 inline-block rounded-full bg-blue-500/10 px-4 py-2 text-sm font-semibold text-blue-300">
               About Us
             </span>
             <h2 className="mb-6 text-4xl font-bold text-white lg:text-5xl">
@@ -113,29 +116,26 @@ const AboutPreview = () => {
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <Link
-                href="/about"
-                className="group inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-white transition-all
-                 hover:bg-blue-700"
+              <motion.a
+                href="/contact"
+                className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-gradient-to-r
+               from-blue-500 to-purple-600 p-0.5 text-lg font-semibold text-white"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                Learn More About Us
-                <svg
-                  className="h-5 w-5 transition-transform group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+                <span
+                  className="relative rounded-full bg-black/10 px-8 py-3.5 transition-all duration-300 ease-out 
+              group-hover:bg-black/0"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </Link>
+                  Learn More About Us
+                  <span className="ml-2 inline-block transition-transform duration-300 ease-out group-hover:translate-x-1">
+                    →
+                  </span>
+                </span>
+              </motion.a>
             </motion.div>
           </motion.div>
 

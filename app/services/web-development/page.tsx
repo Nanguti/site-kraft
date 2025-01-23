@@ -100,8 +100,8 @@ const processSteps = [
 // Add statistics
 const statistics = [
   { value: "99%", label: "Client Satisfaction" },
-  { value: "100+", label: "Projects Delivered" },
-  { value: "85%", label: "Faster Load Times" },
+  { value: "50+", label: "Projects Delivered" },
+  { value: "92%", label: "Faster Load Times" },
   { value: "24/7", label: "Support Available" },
 ];
 
@@ -132,7 +132,10 @@ const WebDevelopment = () => {
             }}
             className="absolute -top-1/2 -right-1/2 h-full w-full bg-gradient-to-br from-blue-500/10 to-purple-500/10 blur-3xl"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(59,130,246,0.1)_1px,transparent_1px),linear-gradient(-45deg,rgba(59,130,246,0.1)_1px,transparent_1px)] bg-[length:40px_40px]" />
+          <div
+            className="absolute inset-0 bg-[linear-gradient(45deg,rgba(59,130,246,0.1)_1px,transparent_1px),
+          linear-gradient(-45deg,rgba(59,130,246,0.1)_1px,transparent_1px)] bg-[length:40px_40px]"
+          />
           <motion.div
             style={{ y, opacity }}
             className="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-transparent"
@@ -146,10 +149,13 @@ const WebDevelopment = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <span className="mb-4 inline-block rounded-full bg-blue-500/10 px-4 py-1 text-sm font-semibold text-blue-300">
+            <span className="mb-4 inline-block rounded-full bg-blue-500/10 px-4 py-2 text-sm font-semibold text-blue-300">
               Web Development Services
             </span>
-            <h1 className="mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-500 bg-clip-text text-5xl font-bold text-transparent md:text-7xl">
+            <h1
+              className="mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-500 bg-clip-text text-4xl 
+            font-bold text-transparent md:text-5xl"
+            >
               Crafting Digital Excellence
             </h1>
             <p className="mx-auto mb-8 max-w-2xl text-xl text-blue-100/80">

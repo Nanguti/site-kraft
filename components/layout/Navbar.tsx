@@ -1,12 +1,13 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-// import Image from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 
 const navigation = [
+  { name: "Home", href: "/" },
   {
     name: "Services",
     href: "#",
@@ -75,9 +76,9 @@ const Navbar = () => {
               >
                 <Link
                   href={item.href}
-                  className={`group flex items-center space-x-1 text-sm font-medium transition-colors ${
+                  className={`group rounded-lg px-2 py-2 flex items-center space-x-1 text-sm font-medium transition-colors ${
                     isScrolled ? "text-gray-700" : "text-white"
-                  } hover:text-blue-600`}
+                  } hover:bg-blue-50 hover:text-blue-600`}
                 >
                   <span>{item.name}</span>
                   {item.dropdownItems && (
@@ -120,7 +121,8 @@ const Navbar = () => {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="/contact"
-                className="rounded-full bg-blue-600 px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+                className="rounded-full bg-gradient-to-tr from-emerald-500 to-sky-500 px-6 py-2.5 text-sm 
+                font-medium text-white transition-colors hover:bg-blue-700"
               >
                 Get Started
               </Link>

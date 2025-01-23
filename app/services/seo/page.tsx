@@ -238,10 +238,13 @@ const SEOPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <span className="mb-4 inline-block rounded-full bg-indigo-500/10 px-4 py-1 text-sm font-semibold text-indigo-300">
+            <span className="mb-4 inline-block rounded-full bg-indigo-500/10 px-4 py-2 text-sm font-semibold text-indigo-300">
               SEO Services
             </span>
-            <h1 className="mb-6 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500 bg-clip-text text-5xl font-bold text-transparent md:text-7xl">
+            <h1
+              className="mb-6 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-500 bg-clip-text 
+            text-5xl font-bold text-transparent md:text-5xl"
+            >
               Dominate Search Rankings
             </h1>
             <p className="mx-auto mb-8 max-w-2xl text-xl text-indigo-100/80">

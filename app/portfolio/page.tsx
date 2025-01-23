@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { FaGlobe, FaMobile, FaShoppingCart, FaSearch } from "react-icons/fa";
+import Image from "next/image";
 
 const categories = ["All", "Web", "E-commerce", "Mobile", "SEO"];
 
@@ -11,7 +12,7 @@ const projects = [
     id: 1,
     title: "E-commerce Platform",
     category: "E-commerce",
-    image: "/portfolio/project1.jpg",
+    image: "/case-studies/ecommerce.png",
     description: "Modern e-commerce platform with advanced features",
     tech: ["Next.js", "Tailwind CSS", "Stripe", "MongoDB"],
     icon: FaShoppingCart,
@@ -114,7 +115,10 @@ const PortfolioPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h1 className="mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-5xl font-bold text-transparent md:text-7xl">
+            <h1
+              className="mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text
+             text-5xl font-bold text-transparent md:text-7xl"
+            >
               Our Portfolio
             </h1>
             <p className="mx-auto mb-12 max-w-2xl text-xl text-gray-300">
@@ -158,7 +162,12 @@ const PortfolioPage = () => {
                 className="group relative overflow-hidden rounded-2xl bg-white/5 p-1 backdrop-blur-sm"
               >
                 <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
-                  {/* Project Image */}
+                  <Image
+                    src={project.image}
+                    width={400}
+                    height={300}
+                    alt=""
+                  ></Image>
                   <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-800">
                     <div
                       className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-50`}
@@ -169,7 +178,10 @@ const PortfolioPage = () => {
                     <project.icon className="h-16 w-16 text-white/50" />
                   </div>
                   {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent 
+                  opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  >
                     <div className="absolute inset-x-4 bottom-4">
                       <h3 className="mb-2 text-xl font-bold text-white">
                         {project.title}

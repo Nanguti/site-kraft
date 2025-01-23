@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
+import Link from "next/link";
 import { useRef } from "react";
 import {
   FaShoppingCart,
@@ -17,7 +18,7 @@ const services = [
     title: "Custom E-commerce Development",
     description:
       "Tailored online stores built with cutting-edge technologies for optimal performance.",
-    color: "from-emerald-500 to-emerald-600",
+    color: "from-indigo-500 to-indigo-600",
   },
   {
     icon: FaMobile,
@@ -79,10 +80,10 @@ const StorePreview = () => (
     <div className="flex items-center gap-2 border-b border-gray-200 bg-gray-50 px-4 py-3">
       <div className="h-3 w-3 rounded-full bg-red-500" />
       <div className="h-3 w-3 rounded-full bg-yellow-500" />
-      <div className="h-3 w-3 rounded-full bg-green-500" />
+      <div className="h-3 w-3 rounded-full bg-indigo-500" />
     </div>
-    <div className="grid grid-cols-2 gap-4 p-6">
-      {[1, 2, 3, 4].map((item) => (
+    <div className="grid grid-cols-3 gap-4 p-6">
+      {[1, 2, 3].map((item) => (
         <motion.div
           key={item}
           initial={{ opacity: 0 }}
@@ -99,7 +100,7 @@ const StorePreview = () => (
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="rounded-full bg-emerald-500 px-4 py-2 text-sm text-white"
+        className="rounded-full bg-purple-700 px-4 py-2 text-sm text-white"
       >
         Add to Cart
       </motion.button>
@@ -119,12 +120,15 @@ const EcommercePage = () => {
   return (
     <div ref={containerRef} className="overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen bg-gradient-to-b from-emerald-950 to-gray-900 py-32">
+      <section className="relative min-h-screen bg-gradient-to-b from-indigo-950 to-gray-900 py-32">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(16,185,129,0.1)_1px,transparent_1px),linear-gradient(-45deg,rgba(16,185,129,0.1)_1px,transparent_1px)] bg-[length:40px_40px]" />
+          <div
+            className="absolute inset-0 bg-[linear-gradient(45deg,rgba(16,185,129,0.1)_1px,transparent_1px),
+          linear-gradient(-45deg,rgba(16,185,129,0.1)_1px,transparent_1px)] bg-[length:40px_40px]"
+          />
           <motion.div
             style={{ y }}
-            className="absolute inset-0 bg-gradient-to-b from-emerald-500/10 to-transparent"
+            className="absolute inset-0 bg-gradient-to-b from-purple-500/10 to-transparent"
           />
         </div>
 
@@ -135,13 +139,16 @@ const EcommercePage = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <span className="mb-4 inline-block rounded-full bg-emerald-500/10 px-4 py-1 text-sm font-semibold text-emerald-300">
+            <span className="mb-4 inline-block rounded-full bg-indigo-500/10 px-4 py-2 text-sm font-semibold text-purple-300">
               E-commerce Solutions
             </span>
-            <h1 className="mb-6 bg-gradient-to-r from-emerald-400 via-teal-400 to-blue-500 bg-clip-text text-5xl font-bold text-transparent md:text-7xl">
+            <h1
+              className="mb-6 bg-gradient-to-r from-indigo-400 via-teal-400 to-blue-500 bg-clip-text 
+            text-5xl font-bold text-transparent md:text-5xl"
+            >
               Transform Your Online Store
             </h1>
-            <p className="mx-auto mb-12 max-w-2xl text-xl text-emerald-100/80">
+            <p className="mx-auto mb-12 max-w-2xl text-xl text-indigo-100/80">
               Build a powerful e-commerce presence with our cutting-edge
               solutions designed for maximum conversions and growth.
             </p>
@@ -165,9 +172,10 @@ const EcommercePage = () => {
                 className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-lg"
               >
                 <div
-                  className={`absolute inset-0 bg-gradient-to-r ${service.color} opacity-0 transition-opacity duration-300 group-hover:opacity-5`}
+                  className={`absolute inset-0 bg-gradient-to-r ${service.color} opacity-0 transition-opacity
+                     duration-300 group-hover:opacity-5`}
                 />
-                <service.icon className="mb-6 h-8 w-8 text-emerald-600" />
+                <service.icon className="mb-6 h-8 w-8 text-purple-800" />
                 <h3 className="mb-4 text-xl font-bold text-gray-900">
                   {service.title}
                 </h3>
@@ -179,7 +187,7 @@ const EcommercePage = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="relative bg-emerald-900 py-24">
+      <section className="relative bg-purple-900 py-24">
         <div className="container mx-auto px-4">
           <div className="grid gap-8 md:grid-cols-4">
             {features.map((feature, index) => (
@@ -190,10 +198,10 @@ const EcommercePage = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="mb-2 text-4xl font-bold text-emerald-400">
+                <div className="mb-2 text-4xl font-bold text-indigo-400">
                   {feature.number}
                 </div>
-                <div className="text-sm text-emerald-200">{feature.label}</div>
+                <div className="text-sm text-indigo-200">{feature.label}</div>
               </motion.div>
             ))}
           </div>
@@ -231,16 +239,14 @@ const EcommercePage = () => {
                   <span className="font-medium text-gray-900">
                     {platform.name}
                   </span>
-                  <span className="text-emerald-600">
-                    {platform.expertise}%
-                  </span>
+                  <span className="text-purple-600">{platform.expertise}%</span>
                 </div>
                 <div className="h-2 overflow-hidden rounded-full bg-gray-200">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: `${platform.expertise}%` }}
                     transition={{ duration: 1, delay: 0.2 }}
-                    className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-emerald-600"
+                    className="h-full rounded-full bg-gradient-to-r from-indigo-400 to-indigo-600"
                   />
                 </div>
               </motion.div>
@@ -250,7 +256,7 @@ const EcommercePage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-emerald-900 to-emerald-800 py-24">
+      <section className="relative overflow-hidden bg-gradient-to-br from-indigo-900 to-indigo-800 py-24">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -260,7 +266,7 @@ const EcommercePage = () => {
           <h2 className="mb-6 text-4xl font-bold text-white">
             Ready to Launch Your Online Store?
           </h2>
-          <p className="mx-auto mb-8 max-w-2xl text-emerald-100/80">
+          <p className="mx-auto mb-8 max-w-2xl text-indigo-100/80">
             Let us discuss how we can help you create a powerful e-commerce
             presence that drives sales and growth.
           </p>
@@ -269,10 +275,14 @@ const EcommercePage = () => {
             whileTap={{ scale: 0.95 }}
             className="relative inline-block"
           >
-            <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-emerald-400 to-teal-400 opacity-75 blur group-hover:opacity-100" />
-            <a
+            <div
+              className="absolute -inset-1 rounded-full bg-gradient-to-r from-indigo-400 to-teal-400 opacity-75 
+            blur group-hover:opacity-100"
+            />
+            <Link
               href="/contact"
-              className="relative inline-flex items-center gap-2 rounded-full bg-emerald-600 px-8 py-4 text-lg font-medium text-white transition-colors hover:bg-emerald-700"
+              className="relative inline-flex items-center gap-2 rounded-full bg-indigo-600 px-8 py-4 text-lg font-medium
+               text-white transition-colors hover:bg-indigo-700"
             >
               Start Your Project
               <motion.svg
@@ -290,7 +300,7 @@ const EcommercePage = () => {
                   d="M17 8l4 4m0 0l-4 4m4-4H3"
                 />
               </motion.svg>
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
       </section>

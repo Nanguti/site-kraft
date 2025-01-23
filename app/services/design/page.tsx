@@ -91,8 +91,8 @@ const DesignPreview = () => (
     transition={{ duration: 0.8 }}
     className="relative mx-auto max-w-lg"
   >
-    <div className="grid grid-cols-2 gap-4">
-      {[1, 2, 3, 4].map((item) => (
+    <div className="grid grid-cols-3 gap-4">
+      {[1, 2, 3].map((item) => (
         <motion.div
           key={item}
           initial={{ scale: 0.8, opacity: 0 }}
@@ -101,7 +101,10 @@ const DesignPreview = () => (
           whileHover={{ scale: 1.05 }}
           className="group relative aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-violet-100 to-pink-100"
         >
-          <motion.div className="absolute inset-0 bg-gradient-to-br from-violet-500/20 to-pink-500/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-br from-violet-500/20 to-pink-500/20 opacity-0 
+          transition-opacity duration-300 group-hover:opacity-100"
+          />
           <div className="absolute inset-4 rounded-xl bg-white/80 backdrop-blur-sm" />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="h-8 w-8 rounded-full bg-gradient-to-br from-violet-500 to-pink-500" />
@@ -126,7 +129,10 @@ const DesignPage = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen bg-gradient-to-b from-violet-950 to-gray-900 py-32">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(139,92,246,0.1)_1px,transparent_1px),linear-gradient(-45deg,rgba(139,92,246,0.1)_1px,transparent_1px)] bg-[length:40px_40px]" />
+          <div
+            className="absolute inset-0 bg-[linear-gradient(45deg,rgba(139,92,246,0.1)_1px,transparent_1px),
+          linear-gradient(-45deg,rgba(139,92,246,0.1)_1px,transparent_1px)] bg-[length:40px_40px]"
+          />
           <motion.div
             style={{ y }}
             className="absolute inset-0 bg-gradient-to-b from-violet-500/10 to-transparent"
@@ -140,10 +146,13 @@ const DesignPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <span className="mb-4 inline-block rounded-full bg-violet-500/10 px-4 py-1 text-sm font-semibold text-violet-300">
+            <span className="mb-4 inline-block rounded-full bg-violet-500/10 px-4 py-2 text-sm font-semibold text-violet-300">
               UI/UX Design Services
             </span>
-            <h1 className="mb-6 bg-gradient-to-r from-violet-400 via-pink-400 to-amber-400 bg-clip-text text-5xl font-bold text-transparent md:text-7xl">
+            <h1
+              className="mb-6 bg-gradient-to-r from-violet-400 via-pink-400 to-amber-400 bg-clip-text 
+            text-5xl font-bold text-transparent md:text-5xl"
+            >
               Design That Delights
             </h1>
             <p className="mx-auto mb-12 max-w-2xl text-xl text-violet-100/80">
@@ -170,7 +179,8 @@ const DesignPage = () => {
                 className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-lg"
               >
                 <div
-                  className={`absolute inset-0 bg-gradient-to-r ${service.color} opacity-0 transition-opacity duration-300 group-hover:opacity-5`}
+                  className={`absolute inset-0 bg-gradient-to-r ${service.color} opacity-0 transition-opacity
+                     duration-300 group-hover:opacity-5`}
                 />
                 <service.icon className="mb-6 h-8 w-8 text-violet-600" />
                 <h3 className="mb-4 text-xl font-bold text-gray-900">
@@ -253,10 +263,14 @@ const DesignPage = () => {
             whileTap={{ scale: 0.95 }}
             className="relative inline-block"
           >
-            <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-violet-600 to-pink-600 opacity-75 blur group-hover:opacity-100" />
+            <div
+              className="absolute -inset-1 rounded-full bg-gradient-to-r from-violet-600 to-pink-600 opacity-75 
+            blur group-hover:opacity-100"
+            />
             <a
               href="/contact"
-              className="relative inline-flex items-center gap-2 rounded-full bg-violet-600 px-8 py-4 text-lg font-medium text-white transition-colors hover:bg-violet-700"
+              className="relative inline-flex items-center gap-2 rounded-full bg-violet-600 px-8 py-4 text-lg font-medium
+               text-white transition-colors hover:bg-violet-700"
             >
               Start Your Project
               <motion.svg
