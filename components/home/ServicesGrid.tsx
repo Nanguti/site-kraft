@@ -200,7 +200,8 @@ const ServicesGrid = () => {
                 className="group relative overflow-hidden rounded-xl bg-white/10 p-6 backdrop-blur-sm"
               >
                 <div
-                  className={`absolute inset-0 bg-gradient-to-r ${service.color} opacity-0 transition-opacity duration-300 group-hover:opacity-10`}
+                  className={`absolute inset-0 bg-gradient-to-r ${service.color} opacity-0 transition-opacity 
+                    duration-300 group-hover:opacity-10`}
                 />
 
                 <div className="relative">

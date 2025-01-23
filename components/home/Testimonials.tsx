@@ -3,6 +3,7 @@
 import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 import { useEffect } from "react";
+import PrimaryButton from "../shared/PrimaryButton";
 
 const testimonials = [
   {
@@ -146,32 +147,10 @@ const Testimonials = () => {
         </div>
 
         {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-16"
-        >
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition-colors duration-300"
-          >
-            Start Your Project
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </a>
-        </motion.div>
+        <div className="flex justify-center mt-12">
+          {" "}
+          <PrimaryButton label="Start Your Project" href="/contact" />
+        </div>
       </div>
     </section>
   );

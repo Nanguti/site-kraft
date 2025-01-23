@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { FaCalendar, FaUser, FaClock, FaArrowRight } from "react-icons/fa";
+import PrimaryButton from "../shared/PrimaryButton";
 
 const blogPosts = [
   {
@@ -124,20 +125,9 @@ const BlogPreview = () => {
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 text-center"
-        >
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-3 text-white transition-all hover:bg-blue-700"
-          >
-            View All Posts
-            <FaArrowRight />
-          </Link>
-        </motion.div>
+        <div className="flex justify-center mt-12">
+          <PrimaryButton label="View All Posts" href="/blog" />
+        </div>
       </div>
     </section>
   );

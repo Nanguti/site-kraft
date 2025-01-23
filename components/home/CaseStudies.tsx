@@ -2,8 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa";
+import PrimaryButton from "../shared/PrimaryButton";
 
 const caseStudies = [
   {
@@ -157,32 +156,17 @@ const CaseStudies = () => {
                   </div>
                 </div>
 
-                <Link
-                  href={study.link}
-                  className="group/link inline-flex items-center gap-2 text-blue-600 transition-colors hover:text-blue-700"
-                >
-                  <span>View Case Study</span>
-                  <FaArrowRight className="transition-transform group-hover/link:translate-x-1" />
-                </Link>
+                <div className="flex justify-center mt-12">
+                  <PrimaryButton label="View Case Study" href={study.link} />
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 text-center"
-        >
-          <Link
-            href="/case-studies"
-            className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-3 text-white transition-all hover:bg-blue-700"
-          >
-            View All Case Studies
-            <FaArrowRight />
-          </Link>
-        </motion.div>
+        <div className="flex justify-center mt-12">
+          {" "}
+          <PrimaryButton label="View All Case Studies" href="/case-studies" />
+        </div>
       </div>
     </section>
   );

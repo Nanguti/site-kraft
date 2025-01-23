@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { FaLinkedinIn, FaTwitter, FaGithub } from "react-icons/fa";
+import PrimaryButton from "../shared/PrimaryButton";
 
 const team = [
   {
@@ -91,7 +92,10 @@ const Team = () => {
             >
               <div className="relative mb-4 overflow-hidden rounded-2xl">
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 z-10 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div
+                  className="absolute inset-0 z-10 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent 
+                opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                />
 
                 {/* Image */}
                 <div className="aspect-[4/5]">
@@ -104,7 +108,10 @@ const Team = () => {
                 </div>
 
                 {/* Social Links Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-full p-4 transition-transform duration-300 group-hover:translate-y-0">
+                <div
+                  className="absolute bottom-0 left-0 right-0 z-20 translate-y-full p-4 transition-transform
+                 duration-300 group-hover:translate-y-0"
+                >
                   <div className="flex justify-center space-x-4">
                     {Object.entries(member.social).map(([platform, url]) => (
                       <Link
@@ -153,32 +160,10 @@ const Team = () => {
         </div>
 
         {/* Join the Team CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 text-center"
-        >
-          <Link
-            href="/careers"
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white/10 px-8 py-3 backdrop-blur-sm transition-colors duration-300 hover:bg-white/20"
-          >
-            <span className="text-white">Join Our Team</span>
-            <svg
-              className="h-5 w-5 text-white transition-transform duration-300 group-hover:translate-x-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </Link>
-        </motion.div>
+        <div className="flex justify-center mt-12">
+          {" "}
+          <PrimaryButton label="Join the Team" href="/contact" />
+        </div>
       </div>
     </section>
   );

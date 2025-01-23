@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import PrimaryButton from "../shared/PrimaryButton";
 
 const industries = [
   {
@@ -98,7 +99,10 @@ const Industries = () => {
                 </div>
               </motion.div>
 
-              <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div
+                className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0
+               group-hover:opacity-100 transition-opacity duration-300"
+              >
                 <svg
                   className="w-6 h-6 text-white"
                   fill="none"
@@ -116,17 +120,9 @@ const Industries = () => {
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-12"
-        >
-          <button className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-8 py-3 rounded-full hover:shadow-lg transition-shadow duration-300">
-            Explore All Industries
-          </button>
-        </motion.div>
+        <div className="flex justify-center mt-12">
+          <PrimaryButton label="Explore All Industries" href="/industries" />
+        </div>
       </div>
     </section>
   );
