@@ -11,7 +11,7 @@ export async function GET() {
     return NextResponse.json(blogs, { status: 200 });
   } catch (error) {
     return NextResponse.json(
-      { error: "Failed to fetch blogs" },
+      { error: "Failed to fetch blogs: " + error },
       { status: 500 }
     );
   }
@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     return NextResponse.json(newBlog, { status: 201 });
   } catch (error) {
     return NextResponse.json(
-      { error: "Failed to create blog" },
+      { error: "Failed to create blog: " + error },
       { status: 500 }
     );
   }
