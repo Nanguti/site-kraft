@@ -20,38 +20,36 @@ export default function RootLayout({
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
-    // Open sidebar by default on larger screens
     const handleResize = () => {
-      setIsSidebarOpen(window.innerWidth >= 768);
+      // Only set sidebar on client-side
+      if (typeof window !== "undefined") {
+        setIsSidebarOpen(window.innerWidth >= 768);
+      }
     };
 
-    handleResize(); // Set initial state
-    window.addEventListener("resize", handleResize);
+    // Ensure initial client-side state
+    handleResize();
 
+    window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   return (
     <html lang="en">
       <body className={`${fontSans.variable} font-sans antialiased`}>
         <div className="flex h-screen overflow-hidden">
           <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-
           <div
             className={`flex flex-col flex-1 transition-all duration-100 ${
               isSidebarOpen ? "" : "ml-0 md:ml-20"
             }`}
           >
             <Navbar toggleSidebar={toggleSidebar} />
-
             <main className="flex-1 overflow-y-auto p-4 bg-gray-100">
               {children}
             </main>
-
             <Footer />
           </div>
         </div>
